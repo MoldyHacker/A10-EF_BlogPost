@@ -11,11 +11,9 @@ namespace ApplicationTemplate.Services;
 /// </summary>
 public class MainService : IMainService
 {
-    private readonly IFileService _fileService;
     private readonly ILogger<IMainService> _logger;
-    public MainService(IFileService fileService, ILogger<IMainService> logger)
+    public MainService(ILogger<IMainService> logger)
     {
-        _fileService = fileService;
         _logger = logger;
     }
 
@@ -24,13 +22,12 @@ public class MainService : IMainService
         string choice;
         do
         {
-            Console.Write("\n" +
-                          "1) Display Blogs" +
-                          "2) Add Blog" +
-                          "3) Display Posts" +
-                          "4) Add Post" +
-                          "5) Exit" +
-                          "> ");
+            Console.Write("\n1) Display Blogs" +
+                          "\n2) Add Blog" +
+                          "\n3) Display Posts" +
+                          "\n4) Add Post" +
+                          "\n5) Exit" +
+                          "\n> ");
             choice = Console.ReadLine();
 
             switch (choice)
