@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.Extensions.Logging;
 
 namespace ApplicationTemplate.Services;
 
@@ -9,9 +10,11 @@ namespace ApplicationTemplate.Services;
 public class MainService : IMainService
 {
     private readonly IFileService _fileService;
-    public MainService(IFileService fileService)
+    private readonly ILogger<IMainService> _logger;
+    public MainService(IFileService fileService, ILogger<IMainService> logger)
     {
         _fileService = fileService;
+        _logger = logger;
     }
 
     public void Invoke()
@@ -22,6 +25,13 @@ public class MainService : IMainService
             Console.WriteLine("1) Add Movie");
             Console.WriteLine("2) Display All Movies");
             Console.WriteLine("X) Quit");
+            Console.Write("\n" +
+                          "1) " +
+                          "2) " +
+                          "3) " +
+                          "4) " +
+                          "5) exit" +
+                          "> ");
             choice = Console.ReadLine();
 
             // Logic would need to exist to validate inputs and data prior to writing to the file
